@@ -10,7 +10,10 @@ const database = process.env.MONGODB_URI
 const server = http.createServer(app);
 const io = new Server(server);
 const cors = require('cors')
-app.use(cors());
+app.use(cors({
+  origin: 'https://frontend-kohl-three-48.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE']
+}));
 require('./model/users.js'); // Ensure the model is correctly exported and has valid schema
 require('./model/post.js'); // Ensure the model is correctly exported and has valid schema
 const loginrequire = require('./middleware/loginrequire.js')
