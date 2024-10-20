@@ -1,10 +1,11 @@
+require('dotenv').config()
 const express = require('express');
 const app = express();
 const http = require('http');
 const { Server } = require('socket.io')
-const PortNo = 8000;
-const { mongoUrl } = require('./key'); // Ensure 'mongoUrl' is correctly exported from './key'
+const PortNo = 8000; // Ensure 'mongoUrl' is correctly exported from './key'
 const mongoose = require('mongoose');
+const database = process.env.MONGODB_URI
 
 const server = http.createServer(app);
 const io = new Server(server);
@@ -47,7 +48,7 @@ io.on('connection', (socket) => {
 
 
 // MongoDB Connection
-mongoose.connect(mongoUrl, {
+mongoose.connect(database, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
