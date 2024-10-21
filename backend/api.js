@@ -11,7 +11,7 @@ const server = http.createServer(app);
 const io = new Server(server);
 const cors = require('cors')
 app.use(cors({
-  origin: 'https://frontend-kohl-three-48.vercel.app',
+  origin: 'https://posts-sigma-eight.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE']
 }));
 require('./model/users.js'); // Ensure the model is correctly exported and has valid schema
